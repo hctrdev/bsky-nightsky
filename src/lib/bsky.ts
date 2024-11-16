@@ -16,25 +16,29 @@ class Stream {
   private _jetstreamUrls = [
     'wss://jetstream1.us-east.bsky.network/subscribe',
     'wss://jetstream2.us-east.bsky.network/subscribe',
-    'wss://jetstream3.us-east.bsky.network/subscribe',
-    'wss://jetstream4.us-east.bsky.network/subscribe',
+    'wss://jetstream1.us-west.bsky.network/subscribe',
+    'wss://jetstream2.us-west.bsky.network/subscribe',
   ];
   private _rawStream: WebSocket | null = null;
   private _started: boolean = false;
 
-  private randomUrl(): string {
+  private randomUrl(): URL {
     const jetstreamUrl =
       this._jetstreamUrls[Math.floor(Math.random() * this._jetstreamUrls.length)];
-    console.log(`connecting to: ${jetstreamUrl}`);
-    return jetstreamUrl;
+    return new URL(jetstreamUrl);
   }
 
   private setUpStream(handler: (payload: RawJetstreamMessage) => void) {
-    this._rawStream = new WebSocket(this.randomUrl());
+    const url = this.randomUrl();
+    url.searchParams.set('wantedCollections', 'app.bsky.feed.post');
+    console.log(`connecting to ${url.href}`);
+
+    this._rawStream = new WebSocket(url);
     this._rawStream.onmessage = handler;
     this._rawStream.onclose = () => {
-      console.log('connection closed');
+      console.log('disconnected');
       if (this._started) {
+        console.log('reconnecting ...');
         this.setUpStream(handler);
       }
     };
