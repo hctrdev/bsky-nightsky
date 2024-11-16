@@ -46,6 +46,7 @@
   };
 
   onMount(() => {
+    stream.disconnect();
     stream.connect(handler);
   });
 </script>
@@ -58,7 +59,10 @@
   <img src="/mountains.svg" alt="bg" />
 </div>
 
-<h1>nightsky</h1>
+<div class="text-area">
+  <h1>Nightsky</h1>
+  <a href="/about">what is this?</a>
+</div>
 
 <style>
   :root {
@@ -71,24 +75,49 @@
     position: fixed;
     bottom: 0;
     left: 0;
-    width: 200%;
+    width: 350%;
   }
 
-  h1 {
-    text-align: center;
-    font-family: 'monospace';
+  .text-area {
     position: fixed;
-    left: 2vw;
-    bottom: 2vh;
+    left: 1.5vw;
+    bottom: 1.5vh;
+  }
+
+  .text-area h1 {
+    font-family: 'Jua', sans-serif;
+    font-size: 3rem;
+    margin: 0;
+  }
+
+  .text-area a {
+    font-family: 'Jua', sans-serif;
+    font-size: 1.25rem;
+    margin-top: 10rem;
+    text-decoration: underline;
+    color: #c8a6cc;
+  }
+
+  .text-area a:hover {
+    color: #eee;
+  }
+
+  @media (min-width: 450px) {
+    img {
+      width: 200%;
+    }
   }
 
   @media (min-width: 600px) {
     img {
       bottom: -5vh;
     }
-    h1 {
+    .text-area {
       left: 5vw;
       bottom: 5vh;
+    }
+    .text-area a {
+      color: #a497c2;
     }
   }
   @media (min-width: 800px) {
@@ -96,7 +125,7 @@
       bottom: -7vh;
     }
   }
-  @media (min-width: 900px) {
+  @media (min-width: 1100px) {
     img {
       bottom: -10vh;
       width: 150%;
