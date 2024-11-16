@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { stream } from '$lib/bsky';
+  import { stream, type JetstreamCommitData, type RawJetstreamMessage } from '$lib/bsky';
   import Star from '$lib/Star.svelte';
   import { onMount } from 'svelte';
 
@@ -10,14 +10,14 @@
 
   let stars: StarData[] = [];
 
-  const handler = (event: any) => {
+  const handler = (event: RawJetstreamMessage) => {
     if (!event.data) {
       return;
     }
     if (!event.data.includes('app.bsky.feed.post')) {
       return;
     }
-    const json = JSON.parse(event.data);
+    const json: JetstreamCommitData = JSON.parse(event.data);
     if (!json.commit || !json.commit.record) {
       return;
     }
