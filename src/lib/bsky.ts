@@ -1,5 +1,16 @@
-//import { Jetstream } from "@skyware/jetstream";
-//import Websocket from "ws";
+export interface RawJetstreamMessage {
+  data: string;
+}
+
+export interface JetstreamCommitData {
+  commit: {
+    cid: string;
+    record: {
+      $type: string;
+      text: string;
+    };
+  };
+}
 
 class Stream {
   private _jetstreamUrls = [
@@ -18,7 +29,7 @@ class Stream {
     return jetstreamUrl;
   }
 
-  private setUpStream(handler: (payload: Jetstream) => void) {
+  private setUpStream(handler: (payload: RawJetstreamMessage) => void) {
     this._rawStream = new WebSocket(this.randomUrl());
     this._rawStream.onmessage = handler;
     this._rawStream.onclose = () => {
@@ -29,7 +40,7 @@ class Stream {
     };
   }
 
-  connect(handler: (payload: any) => void) {
+  connect(handler: (payload: RawJetstreamMessage) => void) {
     if (this._rawStream) {
       throw new Error('stream already connected');
     }
