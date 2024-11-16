@@ -1,39 +1,37 @@
 //import { Jetstream } from "@skyware/jetstream";
 //import Websocket from "ws";
 
-
-
-
 class Stream {
   private _jetstreamUrls = [
-    "wss://jetstream1.us-east.bsky.network/subscribe",
-    "wss://jetstream2.us-east.bsky.network/subscribe",
-    "wss://jetstream3.us-east.bsky.network/subscribe",
-    "wss://jetstream4.us-east.bsky.network/subscribe"
-  ]
-  private _rawStream: WebSocket | null = null
-  private _started: boolean = false
+    'wss://jetstream1.us-east.bsky.network/subscribe',
+    'wss://jetstream2.us-east.bsky.network/subscribe',
+    'wss://jetstream3.us-east.bsky.network/subscribe',
+    'wss://jetstream4.us-east.bsky.network/subscribe',
+  ];
+  private _rawStream: WebSocket | null = null;
+  private _started: boolean = false;
 
   private randomUrl(): string {
-    const jetstreamUrl = this._jetstreamUrls[Math.floor(Math.random() * this._jetstreamUrls.length)];
-    console.log(`connecting to: ${jetstreamUrl}`)
-    return jetstreamUrl
+    const jetstreamUrl =
+      this._jetstreamUrls[Math.floor(Math.random() * this._jetstreamUrls.length)];
+    console.log(`connecting to: ${jetstreamUrl}`);
+    return jetstreamUrl;
   }
 
-  private setUpStream(handler: (payload: any) => void) {
-    this._rawStream =  new WebSocket(this.randomUrl());
+  private setUpStream(handler: (payload: Jetstream) => void) {
+    this._rawStream = new WebSocket(this.randomUrl());
     this._rawStream.onmessage = handler;
     this._rawStream.onclose = () => {
-      console.log("connection closed");
+      console.log('connection closed');
       if (this._started) {
         this.setUpStream(handler);
       }
-    }
+    };
   }
 
   connect(handler: (payload: any) => void) {
     if (this._rawStream) {
-      throw new Error("stream already connected");
+      throw new Error('stream already connected');
     }
 
     this._started = true;
