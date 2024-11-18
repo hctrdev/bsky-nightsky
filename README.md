@@ -1,22 +1,38 @@
-# sv
+# Nightsky
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+A little project that shows all posts being created across Bluesky as stars on a night sky ⭐
 
-## Creating a project
+I did this as a way to learn more about the [AT Protocol](https://atproto.com/) and [Bluesky](https://bsky.app/) API.
 
-If you're seeing this, you've probably already done this step. Congrats!
+## How it works
 
-```bash
-# create a new project in the current directory
-npx sv create
+The process is quite straight-forward:
 
-# create a new project in my-app
-npx sv create my-app
-```
+1. Connect a websocket to the [Jetstream](https://github.com/bluesky-social/jetstream) (a feed of all events across Bluesky)
+2. Filter out events that I don't want to process
+   - I only want to process post events (type: `app.bsky.feed.post`)
+3. Get the length of the post
+4. Add the post to the list of stars that gets rendered on the page
+   - The "stars" are just `<div>` objects in a random fixed position with a little CSS
+   - The longer the post, the larger the star
+5. If the list has more than 150 items, remove the oldest one
 
-## Developing
+The result is a night sky with twinkling stars that represent the activity of the network 🌠
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## Contributing
+
+The project has an MIT license, so feel free to do whatever you want with the code! 💙
+
+FYI:
+
+- All development is done on [Gitlab](https://gitlab.com/hctrdev/bsky-nightsky) and then mirrored to Github
+- I'll only accept pull requests that relate to performance improvements or bug fixes
+
+## Running Locally
+
+The project is built with [Svelte](https://svelte.dev).
+
+Once you've installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
 ```bash
 npm run dev
@@ -24,15 +40,3 @@ npm run dev
 # or start the server and open the app in a new browser tab
 npm run dev -- --open
 ```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
