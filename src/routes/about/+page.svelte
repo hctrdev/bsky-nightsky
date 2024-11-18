@@ -40,6 +40,8 @@
 
   <p>
     Made by <a href="https://bsky.app/profile/hctr.dev" target="_blank" rel="nofollow">@hctr.dev</a>
+    | Code available
+    <a href="https://gitlab.com/hctrdev/bsky-nightsky" target="_blank" rel="nofollow">on Gitlab</a>
   </p>
 
   <a href="/">back</a>
