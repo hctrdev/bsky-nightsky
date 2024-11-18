@@ -67,8 +67,6 @@
 <style>
   :root {
     height: 100vh;
-    color: #eee;
-    background-color: #223;
   }
 
   img {

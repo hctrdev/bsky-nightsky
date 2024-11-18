@@ -7,3 +7,10 @@
 </svelte:head>
 
 <slot />
+
+<style>
+  :root {
+    color: #eee;
+    background-color: #151522;
+  }
+</style>
