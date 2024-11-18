@@ -48,9 +48,6 @@
 </article>
 
 <style>
-  :root {
-    background-color: #223;
-  }
   article {
     display: block;
     max-width: 700px;
