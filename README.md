@@ -19,6 +19,11 @@ The process is quite straight-forward:
 
 The result is a night sky with twinkling stars that represent the activity of the network 🌠
 
+If you want to highlight your posts, you can append `?u=<user_handle>` to the URL!
+For example: `https://nightsky.hctr.dev?u=hctr.dev`
+
+These posts will then be in a different colour and won't disappear (at least until you refresh the page).
+
 ## Contributing
 
 The project has an MIT license, so feel free to do whatever you want with the code! 💙
