@@ -38,7 +38,17 @@
     code will attempt to auto-reconnect, but if it doesn't work, try refreshing the page.
   </p>
 
+  <p class="mt">You can also highlight your own posts!</p>
   <p>
+    For example:
+    <code>https://nightsky.hctr.dev?u=your_handle</code>
+  </p>
+  <p>
+    This way your posts will show in a different colour and they won't dissappear like the other
+    posts.
+  </p>
+
+  <p class="mt">
     Made by <a href="https://bsky.app/profile/hctr.dev" target="_blank" rel="nofollow">@hctr.dev</a>
     | Code available
     <a href="https://gitlab.com/hctrdev/bsky-nightsky" target="_blank" rel="nofollow">on Gitlab</a>
@@ -77,5 +87,14 @@
   }
   a:hover {
     color: #eee;
+  }
+  code {
+    background-color: #c8a6cc;
+    color: black;
+    padding: 0.3rem;
+    border-radius: 2px;
+  }
+  .mt {
+    margin-top: 4rem;
   }
 </style>

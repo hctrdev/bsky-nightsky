@@ -1,7 +1,13 @@
 <script lang="ts">
-  import { stream, type JetstreamCommitData, type RawJetstreamMessage } from '$lib/bsky';
-  import Star from '$lib/Star.svelte';
   import { onMount } from 'svelte';
+  import { getProfile } from '$lib/bskyProfile';
+  import { stream } from '$lib/bskyStream';
+  import { postFilter, type PostData } from '$lib/postFilter';
+  import SpecialStar from '$lib/SpecialStar.svelte';
+  import Star from '$lib/Star.svelte';
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const userHandle = urlParams.get('u');
 
   type StarData = {
     id: string;
@@ -9,50 +15,42 @@
   };
 
   let stars: StarData[] = [];
-
-  const handler = (event: RawJetstreamMessage) => {
-    if (!event.data) {
-      return;
-    }
-    if (!event.data.includes('app.bsky.feed.post')) {
-      return;
-    }
-    const json: JetstreamCommitData = JSON.parse(event.data);
-    if (!json.commit || !json.commit.record) {
-      return;
-    }
-    if (json.commit.record.$type !== 'app.bsky.feed.post') {
-      return;
-    }
-    if (!json.commit.record.text) {
-      return;
-    }
-
-    const text = json.commit.record.text;
-    const id = json.commit.cid;
-    addStar(id, text.length);
-  };
+  let specialStars: StarData[] = [];
+  let specialDid: string;
 
   const maxStarsAtOnce = 150;
-  const addStar = (id: string, size: number) => {
+  const addStar = (data: PostData) => {
     if (stars.length >= maxStarsAtOnce) {
       stars = stars.slice(1);
     }
     const star = {
-      id: id,
-      size: size,
+      id: data.postId,
+      size: data.postText.length,
     };
-    stars = [...stars, star];
+    if (data.userDid === specialDid) {
+      specialStars = [...specialStars, star];
+    } else {
+      stars = [...stars, star];
+    }
   };
 
   onMount(() => {
     stream.disconnect();
-    stream.connect(handler);
+    stream.connect((e) => postFilter(e, addStar));
+
+    if (userHandle) {
+      getProfile(userHandle).then((profile) => {
+        specialDid = profile?.did ?? '';
+      });
+    }
   });
 </script>
 
 {#each stars as star (star.id)}
   <Star textSize={star.size} />
+{/each}
+{#each specialStars as star (star.id)}
+  <SpecialStar textSize={star.size} />
 {/each}
 
 <div>

@@ -3,6 +3,7 @@ export interface RawJetstreamMessage {
 }
 
 export interface JetstreamCommitData {
+  did: string;
   commit: {
     cid: string;
     record: {
