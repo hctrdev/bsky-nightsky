@@ -26,6 +26,8 @@
     post. This results in a very visual representation of the network activity!
   </p>
 
+  <p>If you are fast enough, you can click on a star to open the corresponding post.</p>
+
   <p>The longer the post, the bigger the star!</p>
 
   <p>
@@ -44,7 +46,7 @@
     <code>https://nightsky.hctr.dev?u=your_handle</code>
   </p>
   <p>
-    This way your posts will show in a different colour and they won't dissappear like the other
+    This way your posts will show in a different colour and they won't disappear like the other
     posts.
   </p>
 

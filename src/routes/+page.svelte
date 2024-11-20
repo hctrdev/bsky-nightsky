@@ -12,6 +12,7 @@
   type StarData = {
     id: string;
     size: number;
+    url: string;
   };
 
   let stars: StarData[] = [];
@@ -23,9 +24,11 @@
     if (stars.length >= maxStarsAtOnce) {
       stars = stars.slice(1);
     }
+    const url = `https://bsky.app/profile/${data.userDid}/post/${data.postKey}`;
     const star = {
       id: data.postId,
       size: data.postText.length,
+      url: url,
     };
     if (data.userDid === specialDid) {
       specialStars = [...specialStars, star];
@@ -46,11 +49,11 @@
   });
 </script>
 
-{#each stars as star (star.id)}
-  <Star textSize={star.size} />
+{#each stars as star (star.url)}
+  <Star textSize={star.size} url={star.url} />
 {/each}
-{#each specialStars as star (star.id)}
-  <SpecialStar textSize={star.size} />
+{#each specialStars as star (star.url)}
+  <SpecialStar textSize={star.size} url={star.url} />
 {/each}
 
 <div>
@@ -72,6 +75,7 @@
     bottom: 0;
     left: 0;
     width: 350%;
+    pointer-events: none;
   }
 
   .text-area {

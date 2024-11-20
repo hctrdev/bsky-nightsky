@@ -2,6 +2,7 @@ import type { JetstreamCommitData, RawJetstreamMessage } from '$lib/bskyStream';
 
 export interface PostData {
   postId: string;
+  postKey: string;
   userDid: string;
   postText: string;
 }
@@ -28,6 +29,7 @@ export const postFilter = (event: RawJetstreamMessage, fn: (post: PostData) => v
   const id = json.commit.cid;
   const data = {
     postId: id,
+    postKey: json.commit.rkey,
     userDid: did,
     postText: text,
   };
