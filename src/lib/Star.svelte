@@ -1,5 +1,6 @@
 <script lang="ts">
   export let textSize;
+  export let url;
 
   const x = Math.random() * 100;
   const y = Math.random() * 60;
@@ -7,7 +8,15 @@
   const size = Math.max(1, Math.floor(textSize / 20));
 </script>
 
-<div class="star" style="left: {x}%; top: {y}%; width: {size}px; height: {size}px;"></div>
+<a
+  class="star"
+  style="left: {x}%; top: {y}%; width: {size}px; height: {size}px;"
+  target="_blank"
+  rel="nofollow"
+  href={url}
+  aria-label="star"
+>
+</a>
 
 <style>
   .star {

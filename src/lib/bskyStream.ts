@@ -6,6 +6,7 @@ export interface JetstreamCommitData {
   did: string;
   commit: {
     cid: string;
+    rkey: string;
     record: {
       $type: string;
       text: string;
