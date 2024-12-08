@@ -75,6 +75,7 @@
 
   .followed-user-section {
     position: fixed;
+    left: 2rem;
     text-align: left;
     line-height: 0.3;
     font-size: 1.25em;
