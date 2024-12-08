@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { maxStarGenScreenPercent } from '$lib';
+  import { maxStarGenScreenPercent, specialProfile } from '$lib';
   import { onMount } from 'svelte';
 
   onMount(() => {
@@ -16,6 +16,19 @@
   <a href="/about">what is this?</a>
 </div>
 
+{#if $specialProfile }
+<div class="followed-user-section"
+     title="Watching for posts by {$specialProfile.displayName} - these will be highlighted differently">
+  <p>{$specialProfile.displayName}</p>
+  <a class="handle"
+     href="https://bsky.app/profile/{$specialProfile.handle}"
+     target="_blank"
+     rel="nofollow">
+     @{$specialProfile.handle}
+  </a>
+</div>
+{/if}
+
 <style>
   :root {
     height: 100vh;
@@ -27,6 +40,15 @@
     left: 0;
     width: 350%;
     pointer-events: none;
+  }
+
+  a {
+    color: var(--highlight-colour);
+    text-decoration: underline;
+  }
+
+  a:hover {
+    color: var(--text-colour) !important;
   }
 
   .text-area {
@@ -45,12 +67,19 @@
     font-family: 'Jua', sans-serif;
     font-size: 1.25rem;
     margin-top: 10rem;
-    text-decoration: underline;
-    color: var(--highlight-colour);
   }
 
-  .text-area a:hover {
-    color: var(--text-colour);
+  .followed-user-section {
+    position: fixed;
+    text-align: left;
+    line-height: 0.3;
+    font-size: 1.25em;
+    font-family: 'Jua', sans-serif;
+  }
+
+  .followed-user-section .handle {
+    font-size: 1em;
+    font-family: monospace;
   }
 
   @media (min-width: 450px) {
