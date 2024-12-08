@@ -71,41 +71,41 @@
 <style>
   article {
     border-radius: 10px;
-    border: var(--highlight-color) 2px solid;
-    background-color: var(--bg-color);
+    border: var(--highlight-colour) 2px solid;
+    background-color: var(--bg-colour);
     position: relative;
     z-index: 100;
     display: block;
     max-width: 700px;
     padding: 5rem 1.5rem;
     margin: 2rem auto;
-    color: var(--text-color);
+    color: var(--text-colour);
     font-size: 1.25em;
     font-family: 'Montserrat', sans-serif;
     text-align: center;
     font-weight: 600;
   }
   h1 {
-    color: var(--text-color);
+    color: var(--text-colour);
     text-align: center;
     font-family: 'Jua', sans-serif;
     font-size: 3rem;
   }
   hr {
-    border-color: var(--text-color);
+    border-color: var(--text-colour);
     margin: 5rem 0;
   }
   p {
     margin: 1.5rem 0;
   }
   a {
-    color: var(--highlight-color);
+    color: var(--highlight-colour);
   }
   a:hover {
-    color: var(--text-color);
+    color: var(--text-colour);
   }
   code {
-    background-color: var(--highlight-color);
+    background-color: var(--highlight-colour);
     color: black;
     padding: 0.3rem;
     border-radius: 2px;
