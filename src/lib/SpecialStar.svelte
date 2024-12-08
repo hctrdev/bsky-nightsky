@@ -22,8 +22,8 @@
 <style>
   .star {
     position: fixed;
-    background-color: #e2db7e;
+    background-color: var(--special-star-colour);
     border-radius: 50px;
-    box-shadow: 0 0 15px 1px #e2db7ec0;
+    box-shadow: var(--special-star-box-shadow);
   }
 </style>

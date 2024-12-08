@@ -46,11 +46,11 @@
     font-size: 1.25rem;
     margin-top: 10rem;
     text-decoration: underline;
-    color: #c8a6cc;
+    color: var(--highlight-colour);
   }
 
   .text-area a:hover {
-    color: #eee;
+    color: var(--text-colour);
   }
 
   @media (min-width: 450px) {
@@ -68,7 +68,7 @@
       bottom: 5vh;
     }
     .text-area a {
-      color: #a497c2;
+      color: var(--highlight-colour);
     }
   }
   @media (min-width: 800px) {
