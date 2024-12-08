@@ -6,7 +6,7 @@
   import { postFilter, type PostData } from '$lib/postFilter';
   import SpecialStar from '$lib/SpecialStar.svelte';
   import Star from '$lib/Star.svelte';
-    import { specialProfile } from '$lib';
+  import { specialProfile } from '$lib';
 
   const urlParams = new URLSearchParams(window.location.search);
   const userHandle = urlParams.get('u');

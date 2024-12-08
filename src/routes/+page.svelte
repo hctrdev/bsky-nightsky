@@ -16,17 +16,21 @@
   <a href="/about">what is this?</a>
 </div>
 
-{#if $specialProfile }
-<div class="followed-user-section"
-     title="Watching for posts by {$specialProfile.displayName} - these will be highlighted differently">
-  <p>{$specialProfile.displayName}</p>
-  <a class="handle"
-     href="https://bsky.app/profile/{$specialProfile.handle}"
-     target="_blank"
-     rel="nofollow">
-     @{$specialProfile.handle}
-  </a>
-</div>
+{#if $specialProfile}
+  <div
+    class="followed-user-section"
+    title="Watching for posts by {$specialProfile.displayName} - these will be highlighted differently"
+  >
+    <p>{$specialProfile.displayName}</p>
+    <a
+      class="handle"
+      href="https://bsky.app/profile/{$specialProfile.handle}"
+      target="_blank"
+      rel="nofollow"
+    >
+      @{$specialProfile.handle}
+    </a>
+  </div>
 {/if}
 
 <style>
