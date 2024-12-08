@@ -19,7 +19,6 @@
 
   let stars: StarData[] = [];
   let specialStars: StarData[] = [];
-  let specialDid: string;
 
   const maxStarsAtOnce = 150;
   const addStar = (data: PostData) => {
@@ -32,7 +31,7 @@
       size: data.postText.length,
       url: url,
     };
-    if (data.userDid === specialDid) {
+    if (data.userDid === $specialProfile.did) {
       specialStars = [...specialStars, star];
     } else {
       stars = [...stars, star];
@@ -45,7 +44,6 @@
 
     if (userHandle) {
       getProfile(userHandle).then((profile) => {
-        specialDid = profile?.did ?? '';
         specialProfile.set(profile);
       });
     }
