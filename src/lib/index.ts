@@ -1,4 +1,5 @@
 import { writable } from 'svelte/store';
+import type { ProfileData } from './bskyProfile';
 
 /**
  * Max percent of the screen the stars will be generated on. Default is 60%
@@ -7,3 +8,4 @@ import { writable } from 'svelte/store';
  * 30% of the screen.
  */
 export const maxStarGenScreenPercent = writable(60);
+export const specialProfile = writable(null as ProfileData | null);

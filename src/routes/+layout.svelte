@@ -6,6 +6,7 @@
   import { postFilter, type PostData } from '$lib/postFilter';
   import SpecialStar from '$lib/SpecialStar.svelte';
   import Star from '$lib/Star.svelte';
+  import { specialProfile } from '$lib';
 
   const urlParams = new URLSearchParams(window.location.search);
   const userHandle = urlParams.get('u');
@@ -18,7 +19,6 @@
 
   let stars: StarData[] = [];
   let specialStars: StarData[] = [];
-  let specialDid: string;
 
   const maxStarsAtOnce = 150;
   const addStar = (data: PostData) => {
@@ -31,7 +31,7 @@
       size: data.postText.length,
       url: url,
     };
-    if (data.userDid === specialDid) {
+    if (data.userDid === $specialProfile.did) {
       specialStars = [...specialStars, star];
     } else {
       stars = [...stars, star];
@@ -44,7 +44,7 @@
 
     if (userHandle) {
       getProfile(userHandle).then((profile) => {
-        specialDid = profile?.did ?? '';
+        specialProfile.set(profile);
       });
     }
   });
