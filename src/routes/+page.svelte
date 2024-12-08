@@ -1,60 +1,11 @@
 <script lang="ts">
+  import { maxStarGenScreenPercent } from '$lib';
   import { onMount } from 'svelte';
-  import { getProfile } from '$lib/bskyProfile';
-  import { stream } from '$lib/bskyStream';
-  import { postFilter, type PostData } from '$lib/postFilter';
-  import SpecialStar from '$lib/SpecialStar.svelte';
-  import Star from '$lib/Star.svelte';
-
-  const urlParams = new URLSearchParams(window.location.search);
-  const userHandle = urlParams.get('u');
-
-  type StarData = {
-    id: string;
-    size: number;
-    url: string;
-  };
-
-  let stars: StarData[] = [];
-  let specialStars: StarData[] = [];
-  let specialDid: string;
-
-  const maxStarsAtOnce = 150;
-  const addStar = (data: PostData) => {
-    if (stars.length >= maxStarsAtOnce) {
-      stars = stars.slice(1);
-    }
-    const url = `https://bsky.app/profile/${data.userDid}/post/${data.postKey}`;
-    const star = {
-      id: data.postId,
-      size: data.postText.length,
-      url: url,
-    };
-    if (data.userDid === specialDid) {
-      specialStars = [...specialStars, star];
-    } else {
-      stars = [...stars, star];
-    }
-  };
 
   onMount(() => {
-    stream.disconnect();
-    stream.connect((e) => postFilter(e, addStar));
-
-    if (userHandle) {
-      getProfile(userHandle).then((profile) => {
-        specialDid = profile?.did ?? '';
-      });
-    }
+    maxStarGenScreenPercent.set(60);
   });
 </script>
-
-{#each stars as star (star.url)}
-  <Star textSize={star.size} url={star.url} />
-{/each}
-{#each specialStars as star (star.url)}
-  <SpecialStar textSize={star.size} url={star.url} />
-{/each}
 
 <div>
   <img src="/mountains.svg" alt="bg" />

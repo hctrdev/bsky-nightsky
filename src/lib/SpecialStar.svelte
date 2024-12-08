@@ -1,9 +1,11 @@
 <script lang="ts">
+  import { maxStarGenScreenPercent } from '$lib';
+
   export let textSize;
   export let url;
 
   const x = Math.random() * 100;
-  const y = Math.random() * 60;
+  const y = Math.random() * $maxStarGenScreenPercent;
   const size = Math.max(Math.max(1, Math.floor(textSize / 10)), 10);
 </script>
 
