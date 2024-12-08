@@ -71,41 +71,41 @@
 <style>
   article {
     border-radius: 10px;
-    border: #c8a6cc 2px solid;
-    background-color: #151522;
+    border: var(--highlight-color) 2px solid;
+    background-color: var(--bg-color);
     position: relative;
     z-index: 100;
     display: block;
     max-width: 700px;
     padding: 5rem 1.5rem;
     margin: 2rem auto;
-    color: #eee;
+    color: var(--text-color);
     font-size: 1.25em;
     font-family: 'Montserrat', sans-serif;
     text-align: center;
     font-weight: 600;
   }
   h1 {
-    color: #eee;
+    color: var(--text-color);
     text-align: center;
     font-family: 'Jua', sans-serif;
     font-size: 3rem;
   }
   hr {
-    border-color: #eee;
+    border-color: var(--text-color);
     margin: 5rem 0;
   }
   p {
     margin: 1.5rem 0;
   }
   a {
-    color: #c8a6cc;
+    color: var(--highlight-color);
   }
   a:hover {
-    color: #eee;
+    color: var(--text-color);
   }
   code {
-    background-color: #c8a6cc;
+    background-color: var(--highlight-color);
     color: black;
     padding: 0.3rem;
     border-radius: 2px;

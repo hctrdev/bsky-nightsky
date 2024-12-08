@@ -65,7 +65,15 @@
 
 <style>
   :root {
-    color: #eee;
-    background-color: #151522;
+    --bg-color: #151522;
+    --text-color: #eee;
+    --highlight-color: #c8a6cc;
+    --star-color: #fff;
+    --star-box-shadow: 0 0 5px 1px rgba(255, 255, 255, 0.6);
+    --special-star-color: #e2db7e;
+    --special-star-box-shadow: 0 0 15px 1px #e2db7ec0;
+
+    color: var(--text-color);
+    background-color: var(--bg-color);
   }
 </style>

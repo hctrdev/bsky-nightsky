@@ -23,8 +23,8 @@
 <style>
   .star {
     position: fixed;
-    background-color: #fff;
+    background-color: var(--star-color);
     border-radius: 10px;
-    box-shadow: 0 0 5px 1px rgba(255, 255, 255, 0.6);
+    box-shadow: var(--star-box-shadow);
   }
 </style>
