@@ -18,7 +18,7 @@
 
 {#if $specialProfile}
   <div
-    class="followed-user-section"
+    class="watched-user-indicator"
     title="Watching for posts by {$specialProfile.displayName} - these will be highlighted differently"
   >
     <p>{$specialProfile.displayName}</p>
@@ -73,7 +73,7 @@
     margin-top: 10rem;
   }
 
-  .followed-user-section {
+  .watched-user-indicator {
     position: fixed;
     left: 2rem;
     text-align: left;
@@ -82,7 +82,7 @@
     font-family: 'Jua', sans-serif;
   }
 
-  .followed-user-section .handle {
+  .watched-user-indicator .handle {
     font-size: 1em;
     font-family: monospace;
   }
