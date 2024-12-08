@@ -1,3 +1,12 @@
+<script lang="ts">
+  import { maxStarGenScreenPercent } from '$lib';
+  import { onMount } from 'svelte';
+
+  onMount(() => {
+    maxStarGenScreenPercent.set(100);
+  });
+</script>
+
 <article>
   <h1>Nightsky 🦋</h1>
 
@@ -61,10 +70,15 @@
 
 <style>
   article {
+    border-radius: 10px;
+    border: #c8a6cc 2px solid;
+    background-color: #151522;
+    position: relative;
+    z-index: 100;
     display: block;
     max-width: 700px;
-    padding: 5rem 0.5rem;
-    margin: 0 auto;
+    padding: 5rem 1.5rem;
+    margin: 2rem auto;
     color: #eee;
     font-size: 1.25em;
     font-family: 'Montserrat', sans-serif;
