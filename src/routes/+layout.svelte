@@ -31,7 +31,7 @@
       size: data.postText.length,
       url: url,
     };
-    if (data.userDid === $specialProfile.did) {
+    if (data.userDid === $specialProfile?.did) {
       specialStars = [...specialStars, star];
     } else {
       stars = [...stars, star];
