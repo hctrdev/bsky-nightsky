@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { maxStarGenScreenPercent, specialProfile } from '$lib';
+  import { maxStarGenScreenPercent, watchedProfile } from '$lib';
   import { onMount } from 'svelte';
 
   onMount(() => {
@@ -16,19 +16,19 @@
   <a href="/about">what is this?</a>
 </div>
 
-{#if $specialProfile}
+{#if $watchedProfile}
   <div
     class="watched-user-indicator"
-    title="Watching for posts by {$specialProfile.displayName} - these will be highlighted differently"
+    title="Watching for posts by {$watchedProfile.displayName} - these will be highlighted differently"
   >
-    <p>{$specialProfile.displayName}</p>
+    <p>{$watchedProfile.displayName}</p>
     <a
       class="handle"
-      href="https://bsky.app/profile/{$specialProfile.handle}"
+      href="https://bsky.app/profile/{$watchedProfile.handle}"
       target="_blank"
       rel="nofollow"
     >
-      @{$specialProfile.handle}
+      @{$watchedProfile.handle}
     </a>
   </div>
 {/if}
