@@ -6,7 +6,7 @@
   import { postFilter, type PostData } from '$lib/postFilter';
   import SpecialStar from '$lib/SpecialStar.svelte';
   import Star from '$lib/Star.svelte';
-  import { specialProfile } from '$lib';
+  import { watchedProfile } from '$lib';
 
   const urlParams = new URLSearchParams(window.location.search);
   const userHandle = urlParams.get('u');
@@ -31,7 +31,7 @@
       size: data.postText.length,
       url: url,
     };
-    if (data.userDid === $specialProfile?.did) {
+    if (data.userDid === $watchedProfile?.did) {
       specialStars = [...specialStars, star];
     } else {
       stars = [...stars, star];
@@ -44,7 +44,7 @@
 
     if (userHandle) {
       getProfile(userHandle).then((profile) => {
-        specialProfile.set(profile);
+        watchedProfile.set(profile);
       });
     }
   });
