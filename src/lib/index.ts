@@ -8,4 +8,9 @@ import type { ProfileData } from './bskyProfile';
  * 30% of the screen.
  */
 export const maxStarGenScreenPercent = writable(60);
-export const specialProfile = writable(null as ProfileData | null);
+
+/**
+ * Profile being watched to render special stars for their posts. Can be null if no
+ * profile is being watched.
+ */
+export const watchedProfile = writable(null as ProfileData | null);
